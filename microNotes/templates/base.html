@@ -1,0 +1,34 @@
+{#Любая страница проекта должна наследоваться от данной страницы, или от её потомков#}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="/static/style.css">
+    {% block title %}
+
+    {% endblock %}
+</head>
+<body>
+
+<!-- Container -->
+
+<div id="container">
+	<!-- Top -->
+	<div class="top">
+	<header>
+
+
+	</header>
+	</div>
+	<div class="content">
+	{% block content %}
+	{% endblock %}
+	</div>
+	<!-- Footer -->
+	<div class="footer">
+    	<div class="copyright">Copyright © 2016 Alex Pridacha</div>
+	</div>
+	<!-- /Footer -->
+</div>
+</body>
+</html>

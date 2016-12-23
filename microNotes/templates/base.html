@@ -1,14 +1,40 @@
 {#Любая страница проекта должна наследоваться от данной страницы, или от её потомков#}
+{% load staticfiles %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" type="text/css" href="/static/style.css">
+	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
     {% block title %}
 
     {% endblock %}
 </head>
 <body>
+<div class="sidebar">
+	<div class="inner">
+		 <div class="navbar navbar-default">
+			 {% if user.is_authenticated %}
+			 	<p>Привет, {{ user.username }}</p>
+			 	<a href="">Logout</a>
+			 {% else %}
+			 {% if errors %}
+			 	Пользователь с таким именем не зарегистрирован или пароль введен не верно
+			 {% endif %}
+        	<form class="navbar-form login-form" method="post" action="">
+            {% csrf_token %}
+            <input type="text" placeholder="Логин" name="login">
+            <input type="password" placeholder="Пароль" name="password">
+            <input type="submit" class="btn btn-default" value="Войти">
+			</form></div>
+    {% endif %}
+	</div>
+	<!-- Footer -->
+	<div class="footer">
+    	<div class="copyright">Copyright © 2016 Alex Pridacha</div>
+	</div>
+	<!-- /Footer -->
+</div>
 
 <!-- Container -->
 
@@ -24,11 +50,7 @@
 	{% block content %}
 	{% endblock %}
 	</div>
-	<!-- Footer -->
-	<div class="footer">
-    	<div class="copyright">Copyright © 2016 Alex Pridacha</div>
-	</div>
-	<!-- /Footer -->
+
 </div>
 </body>
 </html>

@@ -18,4 +18,5 @@ from django.conf.urls import url
 from mainapp.views import *
 urlpatterns = [
    url(r'^$', main),
+#    url(r'^admin/', admin.site.urls),
 ]
